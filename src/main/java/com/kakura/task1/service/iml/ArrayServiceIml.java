@@ -122,7 +122,7 @@ public class ArrayServiceIml implements ArrayService {
 
             for (int i = 1; i < array.length; i++) {
                 if (array[i] < array[i - 1]) {
-                    swap(array, i, i-1);
+                    swap(array, i, i - 1);
                     needIteration = true;
                 }
             }

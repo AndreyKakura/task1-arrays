@@ -2,28 +2,30 @@ package com.kakura.task1.customreader.impl;
 
 import com.kakura.task1.customreader.CustomReader;
 import com.kakura.task1.exception.CustomReaderException;
+import com.kakura.task1.validator.Validator;
 import com.kakura.task1.validator.impl.ValidatorImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 
 public class CustomReaderImpl implements CustomReader {
 
-    static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
+    private static Validator validator = ValidatorImpl.getInstance();
 
     @Override
     public String readLine(String path) throws CustomReaderException {
-
-        ValidatorImpl validator = ValidatorImpl.getInstance();
-
 
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
 
             String string = reader.readLine();
 
-            while(!validator.validateString(string)) {
+            while (!validator.validateString(string)) {
                 string = reader.readLine();
             }
 

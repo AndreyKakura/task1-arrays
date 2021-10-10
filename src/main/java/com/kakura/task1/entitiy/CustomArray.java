@@ -7,7 +7,6 @@ public class CustomArray {
         this.array = array.clone();
     }
 
-
     public int[] getArray() {
         int[] array = this.array.clone();
         return array;
@@ -22,7 +21,7 @@ public class CustomArray {
 
         String arrayString = "";
 
-        for(int current: array) {
+        for (int current : array) {
             arrayString += current + " ";
         }
 

@@ -6,7 +6,6 @@ public class ValidatorImpl implements Validator {
 
     private static final ValidatorImpl instance = new ValidatorImpl();
 
-    //private static final String INT_REGEX = "-?\\d+";
     private static final String STRING_OF_INT_ARRAY_REGEX = "(-?\\d+( |, | - |))+";
 
     private ValidatorImpl() {
@@ -22,10 +21,4 @@ public class ValidatorImpl implements Validator {
         return string.matches(STRING_OF_INT_ARRAY_REGEX);
     }
 
-    /*
-    @Override
-    public boolean isInt(String stringNumber) {
-        return stringNumber.matches(INT_REGEX);
-    }
-*/
 }

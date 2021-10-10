@@ -1,22 +1,25 @@
 package com.kakura.task1.main;
 
+import com.kakura.task1.customreader.CustomReader;
 import com.kakura.task1.customreader.impl.CustomReaderImpl;
 import com.kakura.task1.entitiy.CustomArray;
 import com.kakura.task1.exception.CustomReaderException;
+import com.kakura.task1.parser.Parser;
 import com.kakura.task1.parser.impl.ParserImpl;
+import com.kakura.task1.service.ArrayService;
 import com.kakura.task1.service.iml.ArrayServiceIml;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Main {
 
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
+
+    private static CustomReader customReader = new CustomReaderImpl();
+    private static Parser parser = new ParserImpl();
+    private static ArrayService arrayService = new ArrayServiceIml();
 
     public static void main(String[] args) throws CustomReaderException {
-
-        CustomReaderImpl customReader = new CustomReaderImpl();
-        ParserImpl parser = new ParserImpl();
-        ArrayServiceIml arrayService = new ArrayServiceIml();
 
         String string = customReader.readLine("src/main/resources/data/arrays.txt");
         int[] array = parser.parseStringToIntArray(string);
@@ -54,7 +57,5 @@ public class Main {
 
         arrayService.replaceNegativeWithZero(customArray);
         logger.info("All negative elements replaced with zero: " + customArray);
-
-
     }
 }

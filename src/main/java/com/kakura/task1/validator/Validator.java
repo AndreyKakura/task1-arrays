@@ -4,6 +4,4 @@ public interface Validator {
 
     boolean validateString(String string);
 
-    /*boolean isInt(String strNumber);*/
-
 }
