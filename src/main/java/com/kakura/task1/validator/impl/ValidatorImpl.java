@@ -7,7 +7,7 @@ public class ValidatorImpl implements Validator {
     private static final ValidatorImpl instance = new ValidatorImpl();
 
     //private static final String INT_REGEX = "-?\\d+";
-    private static final String STRING_OF_INT_ARRAY_REGEX = "(-?\\d+( |, | - ||))+";
+    private static final String STRING_OF_INT_ARRAY_REGEX = "(-?\\d+( |, | - |))+";
 
     private ValidatorImpl() {
 

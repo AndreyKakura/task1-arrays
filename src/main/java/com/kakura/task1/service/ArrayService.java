@@ -8,8 +8,6 @@ public interface ArrayService {
 
     int findMax(CustomArray customArray);
 
-    CustomArray replaceNegativeWithZero(CustomArray customArray);
-
     int findSum(CustomArray customArray);
 
     double findAverage(CustomArray customArray);
@@ -17,5 +15,13 @@ public interface ArrayService {
     int numberOfPositiveElements(CustomArray customArray);
 
     int numberOfNegativeElements(CustomArray customArray);
+
+    void replaceNegativeWithZero(CustomArray customArray);
+
+    void bubbleSort(CustomArray customArray);
+
+    void shuttleSort(CustomArray customArray);
+
+    void shellSort(CustomArray customArray);
 
 }

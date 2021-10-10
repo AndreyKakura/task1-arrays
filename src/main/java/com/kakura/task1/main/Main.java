@@ -5,7 +5,6 @@ import com.kakura.task1.entitiy.CustomArray;
 import com.kakura.task1.exception.CustomReaderException;
 import com.kakura.task1.parser.impl.ParserImpl;
 import com.kakura.task1.service.iml.ArrayServiceIml;
-import com.kakura.task1.validator.impl.ValidatorImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,16 +24,12 @@ public class Main {
 
         int intResult;
         double doubleResult;
-        CustomArray customArrayResult;
 
         intResult = arrayService.findMin(customArray);
         logger.info("Min value is " + intResult);
 
         intResult = arrayService.findMax(customArray);
         logger.info("Max value is " + intResult);
-
-        customArrayResult = arrayService.replaceNegativeWithZero(customArray);
-        logger.info("All negative elements replaced with zero: " + customArrayResult);
 
         intResult = arrayService.findSum(customArray);
         logger.info("Sum of elements is " + intResult);
@@ -48,7 +43,17 @@ public class Main {
         intResult = arrayService.numberOfNegativeElements(customArray);
         logger.info("Number of negative elements is " + intResult);
 
+        arrayService.bubbleSort(customArray);
+        logger.info("Bubble sort: " + customArray);
 
+        arrayService.shuttleSort(customArray);
+        logger.info("Shuttle sort: " + customArray);
+
+        arrayService.shellSort(customArray);
+        logger.info("Shell sort: " + customArray);
+
+        arrayService.replaceNegativeWithZero(customArray);
+        logger.info("All negative elements replaced with zero: " + customArray);
 
 
     }

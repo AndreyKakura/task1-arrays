@@ -37,7 +37,7 @@ public class ArrayServiceIml implements ArrayService {
     }
 
     @Override
-    public CustomArray replaceNegativeWithZero(CustomArray customArray) {
+    public void replaceNegativeWithZero(CustomArray customArray) {
 
         int[] array = customArray.getArray();
 
@@ -47,7 +47,7 @@ public class ArrayServiceIml implements ArrayService {
             }
         }
 
-        return new CustomArray(array);
+        customArray.setArray(array);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class ArrayServiceIml implements ArrayService {
         int sum = 0;
 
         for (int current : array) {
-            sum+= current;
+            sum += current;
         }
 
         return sum;
@@ -71,10 +71,10 @@ public class ArrayServiceIml implements ArrayService {
         double sum = 0;
 
         for (int current : array) {
-            sum+= current;
+            sum += current;
         }
 
-        double average = sum/array.length;
+        double average = sum / array.length;
         return average;
     }
 
@@ -85,8 +85,8 @@ public class ArrayServiceIml implements ArrayService {
 
         int amount = 0;
 
-        for(int current: array) {
-            if(current>0) {
+        for (int current : array) {
+            if (current > 0) {
                 amount++;
             }
         }
@@ -101,8 +101,8 @@ public class ArrayServiceIml implements ArrayService {
 
         int amount = 0;
 
-        for(int current: array) {
-            if(current<0) {
+        for (int current : array) {
+            if (current < 0) {
                 amount++;
             }
         }
@@ -110,4 +110,72 @@ public class ArrayServiceIml implements ArrayService {
         return amount;
     }
 
+    @Override
+    public void bubbleSort(CustomArray customArray) {
+
+        int[] array = customArray.getArray();
+
+        boolean needIteration = true;
+
+        while (needIteration) {
+            needIteration = false;
+
+            for (int i = 1; i < array.length; i++) {
+                if (array[i] < array[i - 1]) {
+                    swap(array, i, i-1);
+                    needIteration = true;
+                }
+            }
+        }
+
+        customArray.setArray(array);
+    }
+
+    @Override
+    public void shuttleSort(CustomArray customArray) {
+
+        int[] array = customArray.getArray();
+
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < array[i - 1]) {
+                swap(array, i, i - 1);
+                for (int z = i - 1; (z - 1) >= 0; z--) {
+                    if (array[z] < array[z - 1]) {
+                        swap(array, z, z - 1);
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+
+        customArray.setArray(array);
+    }
+
+    @Override
+    public void shellSort(CustomArray customArray) {
+
+        int[] array = customArray.getArray();
+
+        int gap = array.length / 2;
+
+        while (gap >= 1) {
+            for (int right = 0; right < array.length; right++) {
+                for (int c = right - gap; c >= 0; c -= gap) {
+                    if (array[c] > array[c + gap]) {
+                        swap(array, c, c + gap);
+                    }
+                }
+            }
+            gap = gap / 2;
+        }
+
+        customArray.setArray(array);
+    }
+
+    private void swap(int[] array, int ind1, int ind2) {
+        int tmp = array[ind1];
+        array[ind1] = array[ind2];
+        array[ind2] = tmp;
+    }
 }
