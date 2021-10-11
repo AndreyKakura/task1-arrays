@@ -6,15 +6,27 @@ public interface ArrayService {
 
     int findMin(CustomArray customArray);
 
+    int findMinStream(CustomArray customArray);
+
     int findMax(CustomArray customArray);
+
+    int findMaxStream(CustomArray customArray);
 
     int findSum(CustomArray customArray);
 
+    int findSumStream(CustomArray customArray);
+
     double findAverage(CustomArray customArray);
+
+    double findAverageStream(CustomArray customArray);
 
     int numberOfPositiveElements(CustomArray customArray);
 
+    int numberOfPositiveElementsStream(CustomArray customArray);
+
     int numberOfNegativeElements(CustomArray customArray);
+
+    int numberOfNegativeElementsStream(CustomArray customArray);
 
     void replaceNegativeWithZero(CustomArray customArray);
 

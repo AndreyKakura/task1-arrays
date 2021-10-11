@@ -1,9 +1,11 @@
-package com.kakura.task1.service.iml;
+package com.kakura.task1.service.impl;
 
 import com.kakura.task1.entitiy.CustomArray;
 import com.kakura.task1.service.ArrayService;
 
-public class ArrayServiceIml implements ArrayService {
+import java.util.stream.IntStream;
+
+public class ArrayServiceImpl implements ArrayService {
 
     @Override
     public int findMin(CustomArray customArray) {
@@ -13,11 +15,17 @@ public class ArrayServiceIml implements ArrayService {
         int min = array[0];
 
         for (int current : array) {
-            if (min < current) {
+            if (min > current) {
                 min = current;
             }
         }
         return min;
+    }
+
+    @Override
+    public int findMinStream(CustomArray customArray) {
+        IntStream intStream = IntStream.of(customArray.getArray());
+        return intStream.min().getAsInt();
     }
 
     @Override
@@ -28,12 +36,18 @@ public class ArrayServiceIml implements ArrayService {
         int max = array[0];
 
         for (int current : array) {
-            if (max > current) {
+            if (max < current) {
                 max = current;
             }
         }
 
         return max;
+    }
+
+    @Override
+    public int findMaxStream(CustomArray customArray) {
+        IntStream intStream = IntStream.of(customArray.getArray());
+        return intStream.max().getAsInt();
     }
 
     @Override
@@ -64,6 +78,12 @@ public class ArrayServiceIml implements ArrayService {
     }
 
     @Override
+    public int findSumStream(CustomArray customArray) {
+        IntStream intStream = IntStream.of(customArray.getArray());
+        return intStream.sum();
+    }
+
+    @Override
     public double findAverage(CustomArray customArray) {
 
         int[] array = customArray.getArray();
@@ -76,6 +96,12 @@ public class ArrayServiceIml implements ArrayService {
 
         double average = sum / array.length;
         return average;
+    }
+
+    @Override
+    public double findAverageStream(CustomArray customArray) {
+        IntStream intStream = IntStream.of(customArray.getArray());
+        return intStream.average().getAsDouble();
     }
 
     @Override
@@ -95,6 +121,13 @@ public class ArrayServiceIml implements ArrayService {
     }
 
     @Override
+    public int numberOfPositiveElementsStream(CustomArray customArray) {
+        IntStream intStream = IntStream.of(customArray.getArray());
+
+        return (int) intStream.filter(x -> x > 0).count();
+    }
+
+    @Override
     public int numberOfNegativeElements(CustomArray customArray) {
 
         int[] array = customArray.getArray();
@@ -108,6 +141,12 @@ public class ArrayServiceIml implements ArrayService {
         }
 
         return amount;
+    }
+
+    @Override
+    public int numberOfNegativeElementsStream(CustomArray customArray) {
+        IntStream intStream = IntStream.of(customArray.getArray());
+        return (int) intStream.filter(x -> x < 0).count();
     }
 
     @Override

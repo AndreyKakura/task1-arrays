@@ -1,9 +1,11 @@
 package com.kakura.task1.entitiy;
 
+import java.util.Arrays;
+
 public class CustomArray {
     private int[] array;
 
-    public CustomArray(int[] array) {
+    public CustomArray(int... array) {
         this.array = array.clone();
     }
 
@@ -27,4 +29,17 @@ public class CustomArray {
 
         return arrayString;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        return Arrays.equals(this.array, ((CustomArray) obj).getArray());
+    }
+
 }

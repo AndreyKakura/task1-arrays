@@ -25,8 +25,13 @@ public class CustomReaderImpl implements CustomReader {
 
             String string = reader.readLine();
 
-            while (!validator.validateString(string)) {
+            while (string != null && !validator.validateString(string)) {
                 string = reader.readLine();
+            }
+
+            if(string == null){
+                logger.error("Correct string was not found");
+                throw new CustomReaderException("Correct string was not found");
             }
 
             return string;
