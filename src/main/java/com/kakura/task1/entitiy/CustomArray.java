@@ -42,4 +42,8 @@ public class CustomArray {
         return Arrays.equals(this.array, ((CustomArray) obj).getArray());
     }
 
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(array);
+    }
 }
